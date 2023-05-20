@@ -12,16 +12,23 @@ function getRandomInt(min, max) {
 let randomNumber = getRandomInt(1, 3);
 console.log(randomNumber);
 
-//Variable randomSymbol is created without a value. 
-//The value given to randomSymbol will be either "rock", "paper" or "scissors" based on randomNumber's current value. An if .. else structure is used to that end.
-let randomSymbol;
+//Variable getComputerChoice is created without a value. 
+//The value given to getComputerChoice will be either "rock", "paper" or "scissors" based on randomNumber's current value. An if .. else structure is used to that end.
+
+let getComputerChoice;
 
 if (randomNumber === 1) {
-    randomSymbol = "rock";
+    getComputerChoice = "rock";
 } else if (randomNumber === 2) {
-    randomSymbol = "paper";
+    getComputerChoice = "paper";
 } else if (randomNumber === 3) {
-    randomSymbol = "scissors";
+    getComputerChoice = "scissors";
 }
 
-console.log(randomSymbol);
+console.log(getComputerChoice);
+
+//Variables playerCurrentScore and computerCurrentScore are created with an initial value of 0.
+//They will be used to keep track of the scores, incrementing its value by one when the correspondant side wins a match.
+
+playerCurrentScore = 0;
+computerCurrentScore = 0;
