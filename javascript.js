@@ -32,3 +32,32 @@ console.log(getComputerChoice);
 
 playerCurrentScore = 0;
 computerCurrentScore = 0;
+
+//variables playerSelection and computerSelection are created.
+//computerSelection reflects the randomly generated symbol coming from getComputerChoice.
+//playerSelection's input comes from a prompt which the user needs to answer.
+//variable regex 1 is created to test against the prompt, making sure the user can only answer with either rock, paper or scissors (case insensitive).
+//a while loop is created so that if user gives a wrong input, and alert message displays and the prompt executes again until the user inputs an apropiate answer.
+
+var playerSelection;
+
+let regex1 = new RegExp(/rock|paper|scissors/, "i");
+
+while (true) {
+    let getPlayerChoice = prompt("Choose Rock, Paper or Scissors (minus and caps both allowed)");
+
+    if (regex1.test(getPlayerChoice)) {
+        playerSelection = getPlayerChoice.toLowerCase();
+        break;
+    } else {
+        alert("Invalid input. Please answer with Rock, Paper or Scissors.");
+    }
+}
+
+let computerSelection = getComputerChoice;
+
+console.log(playerSelection);
+console.log(computerSelection);
+
+
+
