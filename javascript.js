@@ -59,5 +59,32 @@ let computerSelection = getComputerChoice;
 console.log(playerSelection);
 console.log(computerSelection);
 
+//function match is created using as parameters the playerSelection and computerSelection variables.
+//function match compares the "inputs" from computer and player and uses an if ... else structure taking into account all possible matches and returning a string which narrates the result of the match and specifies the winner.
+//variable matchResult is created with the output of match function. Thus its value will be the answer to be shown to the user regarding the current match.
 
+function match(playerSelection, computerSelection) {
+    if (computerSelection === "rock" && playerSelection === "scissors") {
+        console.log("Scissors loose to Rock. Computer wins!"); 
+    } else if (computerSelection === "scissors" && playerSelection === "rock") {
+        return ("Rock beats Scissors. You win!") 
+    } else if (computerSelection === "rock" && playerSelection === "paper") {
+        return ("Paper beats Rock. You win!")
+    } else if (computerSelection === "paper" && playerSelection === "rock") {
+        return ("Rock looses to Paper. Computer wins!")
+    } else if (computerSelection === "paper" && playerSelection === "scissors") {
+        return ("Scissors beat Paper. You win!")
+    } else if (computerSelection === "scissors" && playerSelection === "paper") {
+        return ("Paper looses to Scissors. Computer wins!")
+    } else if (computerSelection === "rock" && playerSelection === "rock") {
+        return ("Rock VS. Rock. It's a tie!")
+    } else if (computerSelection === "paper" && playerSelection === "paper") {
+        return ("Paper VS. Paper. It's a tie!")
+    } else if (computerSelection === "scissors" && playerSelection === "scissors") {
+        return ("Scissors VS. Scissors. It's a tie!")
+    } 
+    }
+
+let matchResult = match(playerSelection, computerSelection);
+console.log(matchResult);
 
