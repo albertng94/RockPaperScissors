@@ -1,4 +1,6 @@
+//added a do/while loop to repeat the rock, paper, scissors program execution until one of the players (user or computer) wins 3 rounds (score = 3).
 
+do {
 
 //Function getRandomInt returns a random integer between the two numerical parameters (included).
 //Variable randomInt executes getRandomInt function to generate a random number from 1 to 3.
@@ -10,7 +12,6 @@ function getRandomInt(min, max) {
 }
 
 let randomNumber = getRandomInt(1, 3);
-console.log(randomNumber);
 
 //Variable getComputerChoice is created without a value. 
 //The value given to getComputerChoice will be either "rock", "paper" or "scissors" based on randomNumber's current value. An if .. else structure is used to that end.
@@ -24,8 +25,6 @@ if (randomNumber === 1) {
 } else if (randomNumber === 3) {
     getComputerChoice = "scissors";
 }
-
-console.log(getComputerChoice);
 
 //variables playerSelection and computerSelection are created.
 //computerSelection reflects the randomly generated symbol coming from getComputerChoice.
@@ -50,16 +49,13 @@ while (true) {
 
 let computerSelection = getComputerChoice;
 
-console.log(playerSelection);
-console.log(computerSelection);
-
 //function round is created using as parameters the playerSelection and computerSelection variables.
 //function round compares the "inputs" from computer and player and uses an if ... else structure taking into account all possible matches and returning a string which narrates the result of the round and specifies the winner.
 //variable roundResult is created with the output of round function. Thus its value will be the answer to be shown to the user regarding the current round.
 
 function round(playerSelection, computerSelection) {
     if (computerSelection === "rock" && playerSelection === "scissors") {
-        console.log("Scissors loose to Rock. Computer wins!"); 
+        return ("Scissors loose to Rock. Computer wins!"); 
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
         return ("Rock beats Scissors. You win!") 
     } else if (computerSelection === "rock" && playerSelection === "paper") {
@@ -82,15 +78,28 @@ function round(playerSelection, computerSelection) {
 let roundResult = round(playerSelection, computerSelection);
 console.log(roundResult);
 
-//Variables playerCurrentScore and computerCurrentScore are created with an initial value of 0.
+//Variables playerCurrentScore and computerCurrentScore are created without an initial value.
 //They will be used to keep track of the scores, incrementing its value by one when the correspondant side wins a match.
+//Their value is then given through an if ... else statement, depending on the value of variables playerCurrentScoreUpdated and computerCurrentScoreUpdated, which are created later with VAR in order have a retroactive use.
+//Their initial value will always be 0, but as soon as their "Updated" counterparts have a superior value, they will adopt it.
 
-let playerCurrentScore = 0;
-let computerCurrentScore = 0;
+let playerCurrentScore;
+if (playerCurrentScoreUpdated > 0) {
+    playerCurrentScore = playerCurrentScoreUpdated;
+} else {
+    playerCurrentScore = 0;
+}
 
-//Function score is created using the variables playerCurrentSocre, computerCurrentScore and roundResult as parameters.
+let computerCurrentScore;
+if (computerCurrentScoreUpdated > 0) {
+    computerCurrentScore = computerCurrentScoreUpdated;
+} else {
+    computerCurrentScore = 0;
+}
+
+//Function score is created using the variables playerCurrentScore, computerCurrentScore and roundResult as parameters.
 //Inside the function, new variables playerCurrentScoreUpdated and computerCurrentScoreUpdated are created. 
-//These are given a score of 0 as initial value, but will add +1 each time computer or player wins a round. This is accomplished through a switch statement.
+//These are given a value equal to their counterpart variables playerCurrentScore and computerCurrentScore, but will add +1 each time computer or player wins a round. This is accomplished through a switch statement.
 //function score returns the updated score values within the newly created variables, and these are re-created in the global scope and associated to those values in order to be able to use them.
 //Finally, variable currentScore is created as string that contains the updated values for computer and player scores, which will be displayed in the console after each round of the match.
 
@@ -114,10 +123,25 @@ function score(playerCurrentScore, computerCurrentScore, roundResult) {
   return { playerCurrentScoreUpdated, computerCurrentScoreUpdated };
 }
 
-let { playerCurrentScoreUpdated, computerCurrentScoreUpdated } = score(playerCurrentScore, computerCurrentScore, roundResult);
+var { playerCurrentScoreUpdated, computerCurrentScoreUpdated } = score(playerCurrentScore, computerCurrentScore, roundResult);
 
 let currentScore = ("Your score: " + playerCurrentScoreUpdated + " | " + "Computer score: " + computerCurrentScoreUpdated);
 console.log(currentScore);
+
+} while ((playerCurrentScoreUpdated < 3) && (computerCurrentScoreUpdated < 3));
+
+//After the loop has been executed the required number of times, a final variable endMatch is created and its value assigned through an if ... else statement.
+//The value will be displayed in the console, anouncing the winner of the match and the final score of each player, based on their acumulated scores in varaibles computerCurrentScoreUpdated and playerCurrentScoreUpdated.
+
+let endMatch;
+if (playerCurrentScoreUpdated === 3) {
+    endMatch = "You win the game " + playerCurrentScoreUpdated + " to " + computerCurrentScoreUpdated + "!!!"
+} else {
+    endMatch = "Computer wins the game " + computerCurrentScoreUpdated + " to " + playerCurrentScoreUpdated + "!!!"
+}
+
+console.log(endMatch);
+
 
 
 
