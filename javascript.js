@@ -50,7 +50,7 @@ if (randomNumber === 1) {
 
 var playerSelection;
 
-let regex1 = new RegExp(/rock|paper|scissors/, "i");
+let regex1 = new RegExp(/^rock$|^paper$|^scissors$/, "i");
 
 while (true) {
     let getPlayerChoice = prompt("Choose Rock, Paper or Scissors (minus and caps both allowed)");
