@@ -27,12 +27,6 @@ if (randomNumber === 1) {
 
 console.log(getComputerChoice);
 
-//Variables playerCurrentScore and computerCurrentScore are created with an initial value of 0.
-//They will be used to keep track of the scores, incrementing its value by one when the correspondant side wins a match.
-
-playerCurrentScore = 0;
-computerCurrentScore = 0;
-
 //variables playerSelection and computerSelection are created.
 //computerSelection reflects the randomly generated symbol coming from getComputerChoice.
 //playerSelection's input comes from a prompt which the user needs to answer.
@@ -59,11 +53,11 @@ let computerSelection = getComputerChoice;
 console.log(playerSelection);
 console.log(computerSelection);
 
-//function match is created using as parameters the playerSelection and computerSelection variables.
-//function match compares the "inputs" from computer and player and uses an if ... else structure taking into account all possible matches and returning a string which narrates the result of the match and specifies the winner.
-//variable matchResult is created with the output of match function. Thus its value will be the answer to be shown to the user regarding the current match.
+//function round is created using as parameters the playerSelection and computerSelection variables.
+//function round compares the "inputs" from computer and player and uses an if ... else structure taking into account all possible matches and returning a string which narrates the result of the round and specifies the winner.
+//variable roundResult is created with the output of round function. Thus its value will be the answer to be shown to the user regarding the current round.
 
-function match(playerSelection, computerSelection) {
+function round(playerSelection, computerSelection) {
     if (computerSelection === "rock" && playerSelection === "scissors") {
         console.log("Scissors loose to Rock. Computer wins!"); 
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
@@ -85,6 +79,45 @@ function match(playerSelection, computerSelection) {
     } 
     }
 
-let matchResult = match(playerSelection, computerSelection);
-console.log(matchResult);
+let roundResult = round(playerSelection, computerSelection);
+console.log(roundResult);
+
+//Variables playerCurrentScore and computerCurrentScore are created with an initial value of 0.
+//They will be used to keep track of the scores, incrementing its value by one when the correspondant side wins a match.
+
+let playerCurrentScore = 0;
+let computerCurrentScore = 0;
+
+//Function score is created using the variables playerCurrentSocre, computerCurrentScore and roundResult as parameters.
+//Inside the function, new variables playerCurrentScoreUpdated and computerCurrentScoreUpdated are created. 
+//These are given a score of 0 as initial value, but will add +1 each time computer or player wins a round. This is accomplished through a switch statement.
+//function score returns the updated score values within the newly created variables, and these are re-created in the global scope and associated to those values in order to be able to use them.
+//Finally, variable currentScore is created as string that contains the updated values for computer and player scores, which will be displayed in the console after each round of the match.
+
+function score(playerCurrentScore, computerCurrentScore, roundResult) {
+  let playerCurrentScoreUpdated = playerCurrentScore;
+  let computerCurrentScoreUpdated = computerCurrentScore;
+
+  switch (roundResult) {
+    case "Rock beats Scissors. You win!":
+    case "Paper beats Rock. You win!":
+    case "Scissors beat Paper. You win!":
+      playerCurrentScoreUpdated = playerCurrentScore + 1;
+      break;
+    case "Scissors loose to Rock. Computer wins!":
+    case "Rock looses to Paper. Computer wins!":
+    case "Paper looses to Scissors. Computer wins!":
+      computerCurrentScoreUpdated = computerCurrentScore + 1;
+      break;
+  }
+
+  return { playerCurrentScoreUpdated, computerCurrentScoreUpdated };
+}
+
+let { playerCurrentScoreUpdated, computerCurrentScoreUpdated } = score(playerCurrentScore, computerCurrentScore, roundResult);
+
+let currentScore = ("Your score: " + playerCurrentScoreUpdated + " | " + "Computer score: " + computerCurrentScoreUpdated);
+console.log(currentScore);
+
+
 
