@@ -1,6 +1,22 @@
+//create variable roundCounter, which is used inside the do-while loop to display the counter of the rounds.
+
+let roundCounter = 0;
+
 //added a do/while loop to repeat the rock, paper, scissors program execution until one of the players (user or computer) wins 3 rounds (score = 3).
 
 do {
+
+//while loop created to increment roundCounter by 1 and display it in the console. The variable's value is also updated.
+//inside the while loop, an if conditional is used to break the loop once roundCounter has a value over 0. 
+//this means the while loop will always break after one iteration, but since it is nested inside a parent do-while loop, it start again with each round keeping the updated value and displaying it in the console.
+
+while (true) {
+    ++roundCounter;
+    console.log("Round " + roundCounter + ":");
+    if (roundCounter > 0) {
+        break;
+    }
+}
 
 //Function getRandomInt returns a random integer between the two numerical parameters (included).
 //Variable randomInt executes getRandomInt function to generate a random number from 1 to 3.
