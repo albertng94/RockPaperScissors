@@ -4,7 +4,30 @@
 
 .text {
     font-family: 'Inter', sans-serif; 
+    color: #FFFFFF;
 }
+
+.background-color {
+    background-image: radial-gradient( 
+    #A99BE2 , 
+    #705BC3 , 
+    #3D188A , 
+    #311865 
+    );
+}
+
+/*.background-color {
+    background-color: #311865;
+    background-image: repeating-conic-gradient(
+    #a99be29f 0deg, 
+    #705bc3a1, 
+    #3c188a85,
+    #3c188a85,
+    #705bc3a1,
+    #a99be29f 90deg
+    );
+}*/
+
 
 body {
     display: flex; 
@@ -16,6 +39,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: transparent;
 }
 
 .scores-div {
@@ -37,4 +61,8 @@ h1 {
 .img-div {
     display: flex;
     gap: 100px;
+}
+
+#rock {
+    margin-top: 20px;
 }
