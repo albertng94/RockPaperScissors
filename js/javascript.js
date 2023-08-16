@@ -10,7 +10,8 @@ const computerRoundScore = document.getElementById("computer-current-score");
 const endMatchResults = document.getElementById("end-match-results");
 const playAgain = document.getElementById("play-again");
 
-//gobal variables that will be updated throughout the script run are created.
+// Global variables that will be updated throughout the script run are created.
+// "initGame" and "render" functions are executed at this time to import all the pre-game values to the UI.
 
 let roundCounter;
 let roundResultOutput;
@@ -87,7 +88,12 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-//
+// Creation of "displayRound" function, which uses "playerChoice", "computerChoice", and "result" as arguments.
+
+// displayRound:
+// Contains an if ... else statement depending on variable result being equal to "win", "lose", or "draw".
+// For "win", "lose", or draw cases, global variable "roundResultOutput" is given a different text which will end up being
+// displayed in the DOM.
 
 function displayRound(playerChoice, computerChoice, result) {
     if (result === "win") {
@@ -101,6 +107,16 @@ function displayRound(playerChoice, computerChoice, result) {
     }
 }
 
+// Creation of "scoreRound" function, which uses "result" as an argument.
+
+// scoreRound:
+// Contains and if ... else statement depending on variable "result".
+// Depending on "win", "lose" cases, global variables "playerScore" or "computerScore" are added 1, so their match scores
+// are updated according to their won games.
+
+// The functionality of "scoreRound" function could have been easily done in the previous function "displayRound", but was
+// instead moved to a separate unique function to keep "displayRound" simple and according to its descriptive name.
+
 function scoreRound(result) {
     if (result === "win") {
         playerScore += 1;
@@ -108,6 +124,11 @@ function scoreRound(result) {
         computerScore += 1;
     }
 }
+
+// Creation of function "endMatch".
+// Contains an if ... else statement based on variables "playerScore" or "computerScore" reaching out a value of 3.
+// The variable that first reaches a value of three will trigger the update of global variable "endMatchResultsOutput"
+// with a text declaring the winner and the final score.
 
 function endMatch() {
     if (playerScore === 3) {
@@ -117,6 +138,9 @@ function endMatch() {
     }
 }
 
+// Creation of function "render", which takes all the global variables and uploads them to the DOM so the user can have
+// live results while playing the game.
+
 function render() {
     roundCounterOutput.textContent = `Round: ${roundCounter}`;
     roundResult.textContent = `${roundResultOutput}`;
@@ -124,6 +148,9 @@ function render() {
     computerRoundScore.textContent = `${computerScore}`;
     endMatchResults.textContent = `${endMatchResultsOutput}`;
 }
+
+// function initGame is created to re-declare the global variables as they should be in a pre-game state, with "roundCounter"
+// being equal to 1, and the scores being equal to 0.
 
 function initGame() {
     roundCounter = 1;
@@ -133,12 +160,18 @@ function initGame() {
     endMatchResultsOutput = "";
 }
 
+// Below is an Event Listener attached to a button which will be the users option to restart the game once finished.
+// It will execute functions "initGame" and "render" to update global variables to pre-game status and render them to the UI.
+
 playAgain.addEventListener("click", () => {
     initGame();
     render();
 });
 
 
+// Functions "getRandomInt" and "getComputerChoice" work together in order to create a random number from 1 to 3 and
+// convert it to the string "rock", "paper", or "scissors", depending on the output.
+// This string is stored in created variable "computerChoice", and will act as the computer's choice for each round.
 
 function getComputerChoice() {
 
