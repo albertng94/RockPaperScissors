@@ -1,68 +1,214 @@
-* {
-    outline: 1px solid red;
-}
-
-.text {
-    font-family: 'Inter', sans-serif; 
-    color: #FFFFFF;
-}
-
-.background-color {
-    background-image: radial-gradient( 
-    #A99BE2 , 
-    #705BC3 , 
-    #3D188A , 
-    #311865 
-    );
-}
-
-/*.background-color {
-    background-color: #311865;
-    background-image: repeating-conic-gradient(
-    #a99be29f 0deg, 
-    #705bc3a1, 
-    #3c188a85,
-    #3c188a85,
-    #705bc3a1,
-    #a99be29f 90deg
-    );
-}*/
-
+/*PAGE ALIGNMENT*/
 
 body {
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-}
-
-.main-div {
+    height: 100%;
+    width: 99%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: transparent;
 }
 
-.scores-div {
-    display: flex;
-    margin: 50px;
-    gap: 100px;
+.background {
+    height: 90%;
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto
 }
 
 h1 {
-    margin: 100px;
-    font-size: 75px;
+    text-align: center;
 }
 
-#title2 {
-    margin: 50px;
-    font-size: 30px;
+#title2,
+#round-counter,
+#round-results,
+#player-current-score,
+#computer-current-score  {
+    text-align: center;
 }
 
 .img-div {
+    margin-top: 5%;
     display: flex;
-    gap: 100px;
+    justify-content:center;
+    column-gap:7%;
 }
 
-#rock {
-    margin-top: 20px;
+#rock,
+#paper,
+#scissors {
+    flex: 0 1 200px;
+}
+
+.secondary-div {
+    min-width: fit-content;
+    max-width: 75%;
+    margin: auto;
+    margin-top: 5%;
+
+}
+
+#round-counter,
+#round-results {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.scores-div {
+    display: flex;
+    justify-content: center;
+    column-gap: 100px;
+    margin-bottom: 30px;
+}
+
+.end-match-div {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#end-match-results {
+    align-self: center;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+#play-again {
+    align-self: center;
+    flex: 0 0 65px;
+    width: 200px;
+}
+
+.popup {
+    visibility: visible;
+    transition: visibility 500ms;
+}
+
+.hide-div {
+    visibility: hidden;
+    transition: visibility;
+}
+
+
+/*STYLING*/
+
+.text {
+    font-family: 'Inter', sans-serif; 
+    color: rgb(53, 61, 61);
+}
+
+body {
+    background-image: linear-gradient(
+        45deg,
+        #33648c , 
+        #8e4393 ,       
+        #3a3297 , 
+        #62358b
+    );
+}
+
+.background {
+    background-color: whitesmoke;
+    border-radius: 6px;
+}
+
+h1.text {
+    padding: 50px;
+    font-size: 75px;
+    background-image: linear-gradient( 
+        45deg,
+        #33648c , 
+        #8e4393 ,       
+        #3a3297 , 
+        #62358b  
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; 
+}
+
+#title2 {
+    font-size: 40px;
+}
+
+.secondary-div {
+    border: solid 3px rgb(53, 61, 61);
+    border-radius: 6px;
+}
+
+.img {
+    border-radius: 3px;
+    border: solid 3px gold;
+    cursor: pointer;
+}
+
+.img:hover {
+    filter:invert();
+    border-color: #3c338c;
+    transition: 
+    filter 500ms,
+    border-color 250ms ;
+}
+
+#round-counter {
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    color: rgb(176, 29, 29);
+}
+
+#round-results,
+#computer-current-score,
+#player-current-score {
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    color: #3c338c;
+}
+
+.end-match-div {
+    background-color: whitesmoke;
+    border-radius: 6px;
+}
+
+#end-match-results {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 50px;
+    color: #3c338c;
+}
+
+#play-again {
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    color: whitesmoke;
+    background-color: rgb(53, 61, 61);
+}
+
+#play-again:hover {
+    cursor: pointer;
+    color: rgb(53, 61, 61);
+    background-color: whitesmoke;
+    border: solid 3px rgb(53, 61, 61);
+    transition: 
+    color 250ms,
+    background-color 250ms,
+    border 250ms;
 }
